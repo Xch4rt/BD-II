@@ -50,10 +50,7 @@ alter  proc ActualizaRecaudacion
 as
 insert into RepositorioBD.dbo.Recaudacion
 select
-'Northwind' as NorthwindBD,
-getdate() as Fecha,
-year(OrderDate) as Year_,
-datename(month, OrderDate) as Mes,
+e.employeeid as IdEmpleado,
 count(distinct o.OrderID) as CantidadOrdenes,
 sum(od.Quantity * od.UnitPrice) as SubTotal,
 sum(od.Quantity * od.UnitPrice * od.Discount) as Descuento,
@@ -61,9 +58,11 @@ sum(distinct o.Freight) as Impuesto,
 sum(od.Quantity * od.UnitPrice * (1-od.Discount)) + sum(distinct o.Freight) as Total
 from Northwind.dbo.Orders o
 inner join Northwind.dbo.[Order Details] od
-on od.OrderID = o.OrderID
+on od.OrderID = o.OrderID,
+inner join Northwind.dbo.Employees e,
+on e.employeeid = o.employeeid
 where month(OrderDate) = month(dateadd(month, -1, getdate()))  and year(orderdate) = year(getdate())
-group by year(orderdate), DATENAME(month, orderdate)
+group by year(orderdate), DATENAME(month, orderdate), o.EmployeeID
 -- para enviar el detalle
 Exec Msdb.dbo.sp_send_dbmail @recipients = 'pab203.guti@gmail.com', @subject = 'Informe de recaudacion mensual', 
 @query = 'Execute RepositorioBD.dbo.ActualizaRecaudacion',
