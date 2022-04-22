@@ -41,9 +41,9 @@ restore database Neptuno  from disk = 'C:\Backups\Backup_DATABASES.bak'
 with
 move  'Neptuno_Data' to   'C:\BackupsI\Neptuno.mdf',
 move  'Extension_I' to   'C:\BackupsI\Extension_I.ndf',
-move  'Extensión_II' to 'C:\BackupsI\Extension_II.ndf',
+move  'ExtensiÃ³n_II' to 'C:\BackupsI\Extension_II.ndf',
 move 'Neptuno_log' to 'C:\BackupsI\Neptuno_log.ldf',
-file = 16, norecovery -- file(2,14,15,16) NO USAR RECOVERY
+file = 16, norecovery -- file(2,14,15,16) NO USAR RECOVERY AL 16 SI USAR RECOVERY
 
 select * from Neptuno.dbo.Pedidos
 
