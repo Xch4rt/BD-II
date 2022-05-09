@@ -12,3 +12,6 @@ grant create table to Pablo1
 
 create table Northwind.Pablo1.PabloPrueba1(id int)
 ```
+
+
+Los usuarios al ser creados tienen por defecto el rol public.
