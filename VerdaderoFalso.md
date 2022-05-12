@@ -29,6 +29,11 @@ permiso de acceso. VERDADERO pero no los puede ejecutar
 
 11. El rol db_owner no puede crear backup de la base de datos. FALSO
 
+12. Se puede denegar el permiso de selección a un objeto que es propiedad del usuario. POSIBLE FALSO
+
+13. Cuando se agrega un objeto a un esquema que es propiedad del usuario, este puede
+borrarlo omodificarlo.
+
 14. Db_SecurityAdmin puede denegar y conceder accesos a todos los usuarios de la base de
 datos VERDADERA
 
