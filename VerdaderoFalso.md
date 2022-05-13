@@ -32,16 +32,21 @@ permiso de acceso. VERDADERO pero no los puede ejecutar
 12. Se puede denegar el permiso de selección a un objeto que es propiedad del usuario. POSIBLE FALSO
 
 13. Cuando se agrega un objeto a un esquema que es propiedad del usuario, este puede
-borrarlo omodificarlo.
+borrarlo omodificarlo. VERDADERO
 
 14. Db_SecurityAdmin puede denegar y conceder accesos a todos los usuarios de la base de
 datos VERDADERA
+
+15. Db_Securityadmin puede crear usuarios y asignarlos a cuentas de acceso. FALSO
 
 
 17. Bulkadmin puede administrar la función Insert Data
 FALSO, no existe esa funcion
 
+18. Securityadmin puede ingresar a todas las bases de datos FALSO
 
+19. Securityadmin puede borrar esquemas y crear nuevos esquemas FALSO
+ 
 20. Los usuarios con rol de propietario de BD no pueden visualizar los dispositivos de
 almacenamiento FALSA
 
