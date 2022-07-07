@@ -13,3 +13,15 @@ from Sales.SalesOrderHeader soh
 inner join Sales.SalesOrderDetail sod
 on soh.SalesOrderID = sod.SalesOrderID
 group by soh.SalesOrderID, soh.SubTotal, soh.Freight
+
+
+
+select * from sales.SalesOrderHeader
+
+alter table sales.SalesOrderHeader add EstadoFecha nvarchar(32)
+
+
+
+update sales.SalesOrderHeader  set EstadoFecha = 'Retrasado' where sales.SalesOrderHeader.ShipDate > sales.SalesOrderHeader.DueDate 
+update sales.SalesOrderHeader  set EstadoFecha = 'A tiempo' where sales.SalesOrderHeader.ShipDate < sales.SalesOrderHeader.DueDate 
+update sales.SalesOrderHeader  set EstadoFecha = 'No entregado' where sales.SalesOrderHeader.ShipDate IS NULL
