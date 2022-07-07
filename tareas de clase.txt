@@ -1,0 +1,15 @@
+create view FactsVentas
+as
+select
+soh.SalesOrderID,
+
+-- Cantidad Vendida
+(select sum(ssod.OrderQty) from sales.SalesOrderDetail ssod where ssod.SalesOrderID = soh.SalesOrderID) [Cantidad Vendida],
+(select sum(ssod.UnitPriceDiscount * ssod.UnitPrice) from sales.SalesOrderDetail ssod where ssod.SalesOrderID = soh.SalesOrderID) [Descuento Recibido],
+soh.SubTotal,
+soh.SubTotal + soh.Freight [Impuesto + SubTotal],
+soh.TotalDue [Total]
+from Sales.SalesOrderHeader soh
+inner join Sales.SalesOrderDetail sod
+on soh.SalesOrderID = sod.SalesOrderID
+group by soh.SalesOrderID, soh.SubTotal, soh.Freight
